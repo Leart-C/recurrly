@@ -1,6 +1,6 @@
 import { icons } from "./icons";
 
-export const tabs = [
+export const tabs : AppTab[] = [
     {name: "index", title: "Home", icon: icons.home},
     {name: "subscriptions", title: "Subscriptions", icon: icons.wallet},
     {name: "insights", title: "Insights", icon: icons.activity},
