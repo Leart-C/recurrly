@@ -45,8 +45,7 @@
     --font-sans-extrabold: sans-extrabold;
 }
 
-@layer components {
-    .tabs-icon {
+.tabs-icon {
         @apply size-12 items-center justify-center;
     }
 
@@ -414,7 +413,6 @@
         @apply text-sm font-sans-semibold text-muted-foreground;
     }
 
-    .category-chip-text-active {
-        @apply text-accent;
-    }
+.category-chip-text-active {
+    @apply text-accent;
 }
