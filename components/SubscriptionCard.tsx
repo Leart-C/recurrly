@@ -1,14 +1,21 @@
 import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 import { formatCurrency, formatStatusLabel, formatSubscriptionDateTime } from '@/lib/utils'
+import Fontisto from '@expo/vector-icons/Fontisto'
 import cslx from 'clsx'
 
-const SubscriptionCard = ({name,price,currency,icon,billing,color, category,plan,renewalDate, onPress, expanded, paymentMethod, startDate, status}: SubscriptionCardProps) => {
+const SubscriptionCard = ({name,price,currency,icon,brandIcon,billing,color, category,plan,renewalDate, onPress, expanded, paymentMethod, startDate, status}: SubscriptionCardProps) => {
   return (
     <Pressable  onPress={onPress} className={cslx('sub-card', expanded ? 'sub-card-expanded' :'bg-card')} style={!expanded &&color ? {backgroundColor: color} : undefined}>
         <View className="sub-head">
             <View className="sub-main">
-                <Image source={icon} className="sub-icon"/>
+                {brandIcon ? (
+                    <View className="sub-icon items-center justify-center bg-white/80">
+                        <Fontisto name={brandIcon.name} size={34} color={brandIcon.color} />
+                    </View>
+                ) : (
+                    <Image source={icon} className="sub-icon"/>
+                )}
                 <View className="sub-copy">
                     <Text numberOfLines={1} className="sub-title">{name}</Text>
                     <Text numberOfLines={1} ellipsizeMode="tail" className="sub-meta">{category?.trim() || plan?.trim() || (renewalDate ? formatSubscriptionDateTime(renewalDate) : '')}</Text>

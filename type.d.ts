@@ -1,4 +1,5 @@
 import type { ImageSourcePropType } from "react-native";
+import type { SubscriptionBrandIcon } from "@/lib/subscriptionIcons";
 
 declare global {
     interface AppTab {
@@ -15,6 +16,7 @@ declare global {
     interface Subscription {
         id: string;
         icon: ImageSourcePropType;
+        brandIcon?: SubscriptionBrandIcon;
         name: string;
         plan?: string;
         category?: string;
@@ -23,6 +25,7 @@ declare global {
         startDate?: string;
         price: number;
         currency?: string;
+        frequency?: "Monthly" | "Yearly";
         billing: string;
         renewalDate?: string;
         color?: string;

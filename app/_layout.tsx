@@ -7,6 +7,7 @@ import { useFonts } from 'expo-font';
 import { useEffect, useRef } from "react";
 import { PostHogProvider, usePostHog } from "posthog-react-native";
 import { posthog } from "@/lib/posthog";
+import { SubscriptionsProvider } from "@/contexts/SubscriptionsContext";
 
 void SplashScreen.preventAutoHideAsync();
 
@@ -71,7 +72,9 @@ export default function RootLayout() {
         }}
       >
         <ClerkPostHogIdentifier />
-        <Stack screenOptions={{ headerShown: false }} />
+        <SubscriptionsProvider>
+          <Stack screenOptions={{ headerShown: false }} />
+        </SubscriptionsProvider>
       </PostHogProvider>
     </ClerkProvider>
   );
