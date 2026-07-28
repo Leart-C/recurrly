@@ -354,11 +354,11 @@
     }
 
     .modal-container {
-        @apply mt-auto max-h-[85%] rounded-t-3xl bg-background;
+        @apply mx-3 mb-3 mt-auto max-h-[80%] rounded-3xl bg-background;
     }
 
     .modal-header {
-        @apply flex-row items-center justify-between border-b border-border px-5 py-4;
+        @apply flex-row items-center justify-between border-b border-border px-4 py-3;
     }
 
     .modal-title {
@@ -366,7 +366,7 @@
     }
 
     .modal-close {
-        @apply size-8 items-center justify-center rounded-full bg-muted;
+        @apply size-9 items-center justify-center rounded-full bg-muted;
     }
 
     .modal-close-text {
@@ -374,7 +374,7 @@
     }
 
     .modal-body {
-        @apply gap-5 p-5;
+        @apply gap-3 p-3;
     }
 
     .picker-row {

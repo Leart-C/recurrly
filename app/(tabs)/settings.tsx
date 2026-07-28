@@ -3,6 +3,7 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ActivityIndicator, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { posthog } from "@/lib/posthog";
 
 export default function Settings() {
   const { signOut } = useClerk();
@@ -12,6 +13,8 @@ export default function Settings() {
   const handleSignOut = async () => {
     try {
       setIsSigningOut(true);
+      posthog.capture('user_signed_out');
+      posthog.reset();
       await signOut();
       router.replace("/(auth)/sign-in");
     } catch (error) {

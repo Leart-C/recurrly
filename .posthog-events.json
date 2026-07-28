@@ -1,0 +1,37 @@
+[
+  {
+    "event_name": "user_signed_in",
+    "event_description": "User successfully authenticates with email and password via Clerk.",
+    "file": "app/(auth)/sign-in.tsx"
+  },
+  {
+    "event_name": "user_signed_up",
+    "event_description": "User successfully creates a new account and completes email verification.",
+    "file": "app/(auth)/sign-up.tsx"
+  },
+  {
+    "event_name": "user_signed_out",
+    "event_description": "User signs out of their account from the Settings screen.",
+    "file": "app/(tabs)/settings.tsx"
+  },
+  {
+    "event_name": "subscription_expanded",
+    "event_description": "User taps a subscription card on the home screen to expand its details.",
+    "file": "app/(tabs)/index.tsx"
+  },
+  {
+    "event_name": "subscription_list_viewed",
+    "event_description": "User views the full subscriptions list tab.",
+    "file": "app/(tabs)/subscriptions.tsx"
+  },
+  {
+    "event_name": "subscription_viewed",
+    "event_description": "User opens a specific subscription detail page.",
+    "file": "app/subscriptions/[id].tsx"
+  },
+  {
+    "event_name": "onboarding_viewed",
+    "event_description": "User enters the onboarding screen (top of the new-user funnel).",
+    "file": "app/onboarding.tsx"
+  }
+]
