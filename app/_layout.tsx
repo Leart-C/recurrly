@@ -2,10 +2,11 @@ import { ClerkProvider } from "@clerk/expo";
 import { tokenCache } from "@clerk/expo/token-cache";
 import AuthLoadingScreen from "@/components/AuthLoadingScreen";
 import { SplashScreen, Stack } from "expo-router";
-void SplashScreen.preventAutoHideAsync();
-import '`@/global.css`';
+import "@/global.css";
 import { useFonts } from 'expo-font';
 import { useEffect } from "react";
+
+void SplashScreen.preventAutoHideAsync();
 
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY ?? "";
 
