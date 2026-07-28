@@ -1,6 +1,7 @@
 import { useAuth, useSignUp } from "@clerk/expo";
 import AuthLoadingScreen from "@/components/AuthLoadingScreen";
 import { Link, useRouter, type Href } from "expo-router";
+import { posthog } from "@/lib/posthog";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -38,6 +39,7 @@ export default function SignUp() {
             return;
           }
 
+          posthog.capture('user_signed_up', { method: 'email' });
           router.replace(decorateUrl("/(tabs)") as Href);
         },
       });

@@ -1,6 +1,7 @@
 import "@/global.css"
 import { Image,Text, View} from "react-native";
 import { Link } from "expo-router";
+import { posthog } from "@/lib/posthog";
 import { SafeAreaView as RNSafeAreaView} from "react-native-safe-area-context";
 import { styled } from "nativewind";
 import images from "@/constants/images";
@@ -66,7 +67,13 @@ export default function App() {
           )} 
           data={HOME_SUBSCRIPTIONS} 
           keyExtractor={(item)=>item.id}
-          renderItem={({item})=>(<SubscriptionCard {...item} expanded={expandedSubscriptionId === item.id} onPress={() => setExpandedSubscriptionId((currentId) => (currentId === item.id ? null : item.id))}/>)}
+          renderItem={({item})=>(<SubscriptionCard {...item} expanded={expandedSubscriptionId === item.id} onPress={() => {
+            const isExpanding = expandedSubscriptionId !== item.id;
+            setExpandedSubscriptionId((currentId) => (currentId === item.id ? null : item.id));
+            if (isExpanding) {
+              posthog.capture('subscription_expanded', { subscription_id: item.id });
+            }
+          }}/>)}
           extraData={expandedSubscriptionId}
           ItemSeparatorComponent={()=><View className="h-4"/>}
           showsVerticalScrollIndicator={false}

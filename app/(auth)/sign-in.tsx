@@ -1,5 +1,6 @@
 import { useSignIn } from "@clerk/expo";
 import { Link, useRouter, type Href } from "expo-router";
+import { posthog } from "@/lib/posthog";
 import { useState } from "react";
 import {
   ActivityIndicator,
@@ -28,6 +29,7 @@ export default function SignIn() {
           return;
         }
 
+        posthog.capture('user_signed_in', { method: 'password' });
         router.replace(decorateUrl("/(tabs)") as Href);
       },
     });
