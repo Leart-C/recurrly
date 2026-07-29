@@ -13,6 +13,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import { posthog } from "@/lib/posthog";
 
 type Frequency = "Monthly" | "Yearly";
 
@@ -93,6 +94,13 @@ export default function CreateSubscriptionModal({
       frequency,
       billing: frequency,
       color: CATEGORY_COLORS[category],
+    });
+
+    posthog.capture("subscription_created", {
+      subscription_name: name.trim(),
+      subscription_price: parsedPrice,
+      subscription_frequency: frequency,
+      subscription_category: category,
     });
 
     resetForm();
